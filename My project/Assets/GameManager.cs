@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Vector3 pushForce;
     private InputAction next, prev, jump;
     private int selectIndex;
+    public TMP_Text timerText;
+    private float timer;
 
    
     void Start()
@@ -56,6 +59,8 @@ public class GameManager : MonoBehaviour
             if (rb != null)
                 rb.AddForce(pushForce);
         }
+        timer += Time.deltaTime;
+        timerText.text = "TIME: " + timer.ToString("F1") +"s";
 
     }
 }
